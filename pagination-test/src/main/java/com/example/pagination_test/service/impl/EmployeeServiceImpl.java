@@ -44,6 +44,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findAllBy(sort);
     }
 
+    @Override
+    public List<Employee> findAllByMinSalary(Long minSalary, Pageable pageable) {
+        return employeeRepository.findAllByMinSalary(minSalary, pageable);
+    }
+
 
     public Long genarateRandomSalary(int minSalary, int maxSalary) {
         int range = maxSalary - minSalary;

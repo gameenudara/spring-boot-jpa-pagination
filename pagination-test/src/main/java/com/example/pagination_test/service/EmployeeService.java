@@ -15,4 +15,6 @@ public interface EmployeeService {
     List<Employee> findAllBy(Pageable pageable);
 
     List<Employee> findAllBySort(Sort sort);
+
+    List<Employee> findAllByMinSalary(Long minSalary, Pageable pageable);
 }

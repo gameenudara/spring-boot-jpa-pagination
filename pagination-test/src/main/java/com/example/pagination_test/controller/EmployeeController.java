@@ -47,5 +47,16 @@ public class EmployeeController {
         PageRequest pageRequest = PageRequest.of(page, size, sort);
         return employeeService.findAllBy(pageRequest);
     }
+    //both sorting and pagination (with custom query)
+    @GetMapping(value = "/min-salary-employees", headers = "X-Api-Version=v1")
+    public List<Employee> getEmployeesByCustomQuery(@RequestParam("salary") Long minSalary,
+                                                    @RequestParam("page") Integer page,
+                                                    @RequestParam("size") Integer size) {
 
+//        Sort sort = Sort.by("salary").descending();
+//        Sort sort = Sort.by("salary").ascending().and(Sort.by("abc").descending());
+        Sort sort = Sort.by("salary").ascending();
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        return employeeService.findAllByMinSalary(minSalary, pageRequest);
+    }
 }
