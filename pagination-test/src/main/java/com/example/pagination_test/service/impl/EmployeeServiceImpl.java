@@ -6,6 +6,7 @@ import com.example.pagination_test.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         System.out.println("current page " + employeePage.getNumber());
         System.out.println("page size " + employeePage.getNumberOfElements());
         return employeePage.getContent();
+    }
+
+    @Override
+    public List<Employee> findAllBySort(Sort sort) {
+        return employeeRepository.findAllBy(sort);
     }
 
 
