@@ -9,8 +9,9 @@ import lombok.Data;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long employeeId;
+
     private String name;
+
     private Long salary;
 }
