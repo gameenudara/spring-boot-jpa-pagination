@@ -38,4 +38,14 @@ public class EmployeeController {
         return employeeService.findAllBySort(Sort.by(Sort.Order.asc("salary")));
     }
 
+    //both sorting and pagination
+    @GetMapping(value = "/page-and-sort-employees", headers = "X-Api-Version=v1")
+    public List<Employee> getPageAndSortEmployees(@RequestParam("page") Integer page,
+                                                  @RequestParam("size") Integer size) {
+
+        Sort sort = Sort.by(Sort.Order.asc("salary"));
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
+        return employeeService.findAllBy(pageRequest);
+    }
+
 }
